@@ -628,5 +628,17 @@
       10
     ],
     "archiveName": "zeitgeist"
+  },
+  {
+    "prefix": 73,
+    "network": "subsocial",
+    "displayName": "Subsocial Network",
+    "symbols": [
+      "BNC"
+    ],
+    "decimals": [
+      10
+    ],
+    "archiveName": "subsocial"
   }
 ]
