@@ -29,12 +29,14 @@ processor.run(new TypeormDatabase(), async (_ctx) => {
         switch (item.name) {
             case 'Balances.Transfer': {
                 const data = chain.api.events.balances.Transfer.decode(ctx, item.event)
-
-                const fromId = encodeAddress(data.from)
+                
+                const fromId = encodeAddress(data.from || (data as any)[0])
                 const from = ctx.store.defer(Account, fromId)
 
-                const toId = encodeAddress(data.to)
+                const toId = encodeAddress(data.to || (data as any)[1])
                 const to = ctx.store.defer(Account, toId)
+
+                const amount = data.amount || (data as any)[2]
 
                 actions.push(
                     new EnsureAccount(block, item.event.extrinsic, {
@@ -49,7 +51,7 @@ processor.run(new TypeormDatabase(), async (_ctx) => {
                         id: item.event.id,
                         fromId,
                         toId,
-                        amount: data.amount,
+                        amount,
                         success: true,
                     })
                 )

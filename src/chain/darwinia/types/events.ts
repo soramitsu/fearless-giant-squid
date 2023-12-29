@@ -25,7 +25,6 @@ export class BalancesTransferEvent {
      * Transfer succeeded.
      */
     get asV6100(): {from: Uint8Array, to: Uint8Array, amount: bigint} {
-        assert(this.isV6100)
         return this._chain.decodeEvent(this.event)
     }
 }
