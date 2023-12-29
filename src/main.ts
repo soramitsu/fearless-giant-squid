@@ -30,10 +30,10 @@ processor.run(new TypeormDatabase(), async (_ctx) => {
             case 'Balances.Transfer': {
                 const data = chain.api.events.balances.Transfer.decode(ctx, item.event)
                 
-                const fromId = encodeAddress(data.from || (data as any)[0])
+                const fromId = data.from ? encodeAddress(data.from) : toHex((data as any)[0])
                 const from = ctx.store.defer(Account, fromId)
 
-                const toId = encodeAddress(data.to || (data as any)[1])
+                const toId = data.from ? encodeAddress(data.to) : toHex((data as any)[1])
                 const to = ctx.store.defer(Account, toId)
 
                 const amount = data.amount || (data as any)[2]
