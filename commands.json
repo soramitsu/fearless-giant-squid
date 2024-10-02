@@ -7,7 +7,7 @@
       },
       "build": {
         "description": "Build the squid project",
-        "deps": ["clean"],
+        "deps": ["typegen","clean"],
         "cmd": ["tsc"]
       },
       "up": {

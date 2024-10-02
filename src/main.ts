@@ -1,6 +1,6 @@
 import {TypeormDatabase} from '@subsquid/typeorm-store'
 import {processor} from './processor'
-import {StoreWithCache} from '@belopash/squid-tools'
+import {StoreWithCache} from '@belopash/typeorm-store'
 import {encodeAddress, getOriginAccountId, processItem} from './utils'
 import {chain} from './chain'
 import {Account, Identity, Judgement, IdentitySub} from './model'
